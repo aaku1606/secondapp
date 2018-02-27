@@ -12,6 +12,9 @@ import { SchoolComponent } from './school/school.component';
 import { CollegeComponent } from './college/college.component';
 
 import {FormsModule} from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileService } from './profile.service';
+import { SchoolService } from './school.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,7 @@ import {FormsModule} from '@angular/forms';
     DashboardComponent,
     SchoolComponent,
     CollegeComponent,
+    ProfileComponent,
 
   ],
   imports: [
@@ -28,7 +32,7 @@ import {FormsModule} from '@angular/forms';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [DataserviceService],
+  providers: [DataserviceService, ProfileService, SchoolService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

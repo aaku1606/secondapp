@@ -17,12 +17,10 @@ import { DataserviceService } from '../dataservice.service';
   <button (click)="login(user.value,pass.value)">login</button>
   </tr>
 </table>
-{{wrongCredentials}}
   `,
   styles: []
 })
 export class LoginComponent implements OnInit {
-  public wrongCredentials = '';
   public user = '';
   public pass = '';
 
@@ -33,7 +31,7 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.user === this.pass) {
       this._dataservice.username = this.user;
-      this.route.navigate(['/web']);
+      this.route.navigate(['/web/dashboard']);
 
     }
   }
