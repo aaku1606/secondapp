@@ -4,33 +4,45 @@ import { SchoolService } from '../school.service';
 @Component({
   selector: 'app-school',
   template: `
-  <div class=form *ngIf = "edit">
-  <h3>schoolName: <input type="text" [(ngModel)]= schoolName></h3>
-  <h3>schoolAddress: <input type="text" [(ngModel)] = schoolAddress></h3>
-  <h3>percentage: <input type="text" [(ngModel)]= percentage></h3>
-  <button (click)= "save()">save</button>
+  <div>
+    <div *ngIf="edit" class=form>
+    <span>SchoolName: </span><input [(ngModel)]="schoolName" type="text"><br/>
+    <span>schoolAddress: </span><input [(ngModel)]="schoolAddress" type="text"><br/>
+    <span>percentage: </span><input [(ngModel)]="percentage" type="text"><br/>
+    <button id=save (click)="save()">Save</button>
+    </div>
+  <div>
+    <div *ngIf="!edit" class=details>
+    <label>schoolName</label>{{school.schoolName}}<br/>
+    <label>SchoolAddress</label>{{school.schoolAddress}}<br/>
+    <label>Percentage</label>{{school.percentage}}<br/>
+    
+    <button id=update (click)="update()">Update</button>
+    </div>
   </div>
-  <div class=button *ngIf="!edit">
-  <label>schoolName:</label>{{school.schoolName}}<br>
-  <label>schoolAddress:</label>{{school.schoolAddress}}<br>
-  <label>percentage:</label>{{school.percentage}}<br>
-  <button (click)="update()">UPDATE</button>
-  </div>
-`,
-  styles: [`
-  .form
- {
-   position: relative;
-   left: 450px;
-   top:50px;
- }
+   `,
+  styles: [
+    `
+  .form,.details,.alter{
+    position: relative;
+    left: 450px;
+    top:150px;
+  }
+  #save{
+    width: 120px;
+    margin-top:30px;
+    margin-left:70px;
+  }
+  #update{
+    width:120px;
+    margin-top:30px;
+    margin-left:15px;
 
- .button
- {
-   position: relative;
-   left: 450px;
-   top:50px;
- }
+  }
+  span,label{
+      display: inline-block;
+      width: 140px;
+  }​
   `]
 })
 export class SchoolComponent implements OnInit {

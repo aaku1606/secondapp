@@ -20,7 +20,7 @@ import { ProfileService } from '../profile.service';
   {
     position: relative;
     left: 550px;
-    top:50px;
+    top:200px;
   }
   .info
   {

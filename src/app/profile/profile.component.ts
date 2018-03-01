@@ -5,37 +5,48 @@ import { ProfileService } from '../profile.service';
 @Component({
   selector: 'app-profile',
   template: `
-
-  <div class=form *ngIf = "edit">
-  <h3>Name: <input type="text" [(ngModel)]= name></h3>
-  <h3>Age: <input type="number" [(ngModel)] = age></h3>
-  <h3>Father's name: <input type="text" [(ngModel)]= fatherName></h3>
-  <h3>Mother's name: <input type="text" [(ngModel)] = motherName></h3>
-  <button (click)="save()">Save</button>
- </div>
-  <div class=button *ngIf="!edit">
-  <label>Name:</label>{{profile.name}}<br>
-  <label>Age:</label>{{profile.age}}<br>
-  <label>Father's name:</label>{{profile.fatherName}}<br>
-  <label>Mother's name:</label>{{profile.motherName}}<br>
-  <button type="submit" (click)="update()">UPDATE</button>
+  <div>
+    <div *ngIf="edit" class=form>
+    <span>My name: </span><input [(ngModel)]="name" type="text"><br/>
+    <span>My age: </span><input [(ngModel)]="age" type="number"><br/>
+    <span>Father's name: </span><input [(ngModel)]="fatherName" type="text"><br/>
+    <span>Mother's name: </span><input [(ngModel)]="motherName" type="text"><br/>
+    <button id=save (click)="save()">Save</button>
+    </div>
+  <div>
+    <div *ngIf="!edit" class=details>
+    <label>Name</label>{{profile.name}}<br/>
+    <label>Age</label>{{profile.age}}<br/>
+    <label>Father's Name</label>{{profile.fatherName}}<br/>
+    <label>Mother's Name</label>{{profile.motherName}}<br/>
+    <button id=update (click)="update()">Update</button>
+    </div>
   </div>
+   `,
+  styles: [
+    `
+  .form,.details,.alter{
+    position: relative;
+    left: 450px;
+    top:150px;
+  }
+  #save{
+    width: 120px;
+    margin-top:30px;
+    margin-left:70px;
+  }
+  #update{
+    width:120px;
+    margin-top:30px;
+    margin-left:15px;
 
-  `,
-  styles: [`
- .form
- {
-   position: relative;
-   left: 450px;
-   top:50px;
- }
- .button
- {
-   position: relative;
-   left: 450px;
-   top:50px;
- }
- `]
+  }
+  span,label{
+      display: inline-block;
+      width: 140px;
+  }​
+  `
+  ]
 })
 export class ProfileComponent implements OnInit {
   public name = '';
